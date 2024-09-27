@@ -3,7 +3,7 @@ import { Recursive } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-// import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/toaster";
 // import Providers from "@/components/Providers";
 // import { constructMetadata } from "@/lib/utils";
 
@@ -29,7 +29,7 @@ export default function RootLayout({
           <Footer />
         </main>
 
-        {/* <Toaster /> */}
+        <Toaster />
       </body>
     </html>
   );
