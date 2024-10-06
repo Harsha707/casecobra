@@ -14,14 +14,12 @@ export async function POST(req: Request) {
 
     // Check if Razorpay signature is provided
     if (!webhookSignature) {
-      console.log("========> invalid signature");
       return new Response("Invalid signature", { status: 400 });
     }
 
     // Ensure Razorpay webhook secret is present
     const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
     if (!webhookSecret) {
-      console.log("========> No secret");
       throw new Error("RAZORPAY_WEBHOOK_SECRET is not defined");
     }
 
