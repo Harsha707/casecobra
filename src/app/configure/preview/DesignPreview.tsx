@@ -54,19 +54,19 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const { mutate: createPaymentSession } = useMutation({
     mutationKey: ["get-checkout-session"],
     mutationFn: createCheckoutSession,
-    onSuccess: async ({ orderId, key_id }) => {
+    onSuccess: async ({ orderId, key_id, dbOrderId }) => {
       await loadRazorpayScript();
 
-      if (orderId && key_id) {
+      if (orderId && key_id && dbOrderId) {
         const options = {
           key: key_id,
-          amount: totalPrice / 100,
+          amount: totalPrice,
           currency: "INR",
           name: "Custom iPhone Case",
           description: "Payment for your custom product",
           order_id: orderId,
           handler: function () {
-            router.push(`/thank-you?orderId=${orderId}`);
+            router.push(`/thank-you?orderId=${dbOrderId}`);
           },
           prefill: {
             email: user?.email,
