@@ -70,5 +70,6 @@ export const createCheckoutSession = async ({
   return {
     orderId: razorpayOrder.id,
     key_id: process.env.RAZORPAY_KEY_ID,
+    dbOrderId: order.id,
   };
 };
